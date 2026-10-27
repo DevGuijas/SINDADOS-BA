@@ -1,0 +1,30 @@
+#root {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+section {
+  margin: 24px 0;
+}
+
+.accordion-item {
+  margin: 8px 0;
+}
+
+.accordion-item p {
+  margin: 8px 0;
+}
+
+.toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  padding: 12px;
+  border: 1px solid #999;
+  background: white;
+}
+
+.toast button {
+  margin-left: 12px;
+}
