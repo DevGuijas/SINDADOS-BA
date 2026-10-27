@@ -87,5 +87,38 @@ function ProgressBar({ value }: { value: number }) {
   )
 }
 
+function Tabs() {
+  const [active, setActive] = useState(0)
+  const contents = [
+    'Representação dos trabalhadores da categoria.',
+    'Acompanhamento das negociações coletivas.',
+    'Informação e orientação sindical.',
+  ]
+  const labels = ['Representação', 'Negociação', 'Orientação']
+
+  return (
+    <section>
+      <h2>Abas</h2>
+      <div role="tablist" aria-label="Atuação sindical">
+        {labels.map((label, index) => (
+          <button
+            aria-selected={active === index}
+            id={`tab-${index}`}
+            key={label}
+            onClick={() => setActive(index)}
+            role="tab"
+            type="button"
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      <p aria-labelledby={`tab-${active}`} role="tabpanel">
+        {contents[active]}
+      </p>
+    </section>
+  )
+}
+
 
 export default App
