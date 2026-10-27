@@ -19,4 +19,73 @@ const faqs = [
   },
 ]
 
+function Accordion() {
+  const [open, setOpen] = useState<number | null>(0)
+
+  return (
+    <section>
+      <h2>Acordeão</h2>
+      {faqs.map((item, index) => (
+        <div className="accordion-item" key={item.question}>
+          <button
+            aria-expanded={open === index}
+            onClick={() => setOpen(open === index ? null : index)}
+            type="button"
+          >
+            {item.question}
+          </button>
+          {open === index && <p>{item.answer}</p>}
+        </div>
+      ))}
+    </section>
+  )
+}
+
+function Pagination({
+  page,
+  pageCount,
+  onChange,
+}: {
+  page: number
+  pageCount: number
+  onChange: (page: number) => void
+}) {
+  return (
+    <section>
+      <h2>Paginação</h2>
+      <button disabled={page === 1} onClick={() => onChange(page - 1)} type="button">
+        Anterior
+      </button>{' '}
+      {Array.from({ length: pageCount }, (_, index) => index + 1).map((number) => (
+        <button
+          aria-current={page === number ? 'page' : undefined}
+          key={number}
+          onClick={() => onChange(number)}
+          type="button"
+        >
+          {number}
+        </button>
+      ))}{' '}
+      <button
+        disabled={page === pageCount}
+        onClick={() => onChange(page + 1)}
+        type="button"
+      >
+        Próxima
+      </button>
+    </section>
+  )
+}
+
+function ProgressBar({ value }: { value: number }) {
+  return (
+    <section>
+      <h2>Barra de progresso</h2>
+      <progress aria-label="Progresso da atividade" max={100} value={value} />{' '}
+      {value}%
+    </section>
+  )
+}
+
+
 export default App
